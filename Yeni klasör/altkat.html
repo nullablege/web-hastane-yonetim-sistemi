@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otomobil İlanları - İlanBurada</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+        }
+        
+        .navbar {
+            box-shadow: 0 2px 4px rgba(0,0,0,.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: #3498db !important;
+        }
+        
+        .btn-post-ad {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+        
+        .btn-post-ad:hover {
+            background-color: #2980b9;
+        }
+        
+        .filter-section {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,.1);
+        }
+        
+        .filter-section .form-label {
+            font-weight: 500;
+            color: #2c3e50;
+        }
+        
+        .car-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,.1);
+            transition: transform 0.3s;
+            height: 100%;
+        }
+        
+        .car-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .car-image {
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .dealer-logo {
+            width: 120px;
+            height: 60px;
+            object-fit: contain;
+            filter: grayscale(100%);
+            transition: filter 0.3s;
+        }
+        
+        .dealer-logo:hover {
+            filter: grayscale(0%);
+        }
+        
+        .brand-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .brand-list a {
+            color: #2c3e50;
+            text-decoration: none;
+            display: block;
+            padding: 5px 0;
+        }
+        
+        .brand-list a:hover {
+            color: #3498db;
+        }
+        
+        .badge-count {
+            background-color: #eee;
+            color: #666;
+            font-size: 0.8em;
+            padding: 2px 6px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar (aynı) -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+        <div class="container">
+            <a class="navbar-brand" href="#">İlanBurada</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <form class="d-flex mx-auto">
+                    <input class="form-control me-2" type="search" placeholder="İlan ara..." style="width: 300px;">
+                    <button class="btn btn-post-ad" type="submit">İlan Ver</button>
+                </form>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                            Hoşgeldiniz
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Profil</a></li>
+                            <li><a class="dropdown-item" href="#">İlanlarım</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Çıkış Yap</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#" class="text-decoration-none">Ana Sayfa</a></li>
+                <li class="breadcrumb-item active">Otomobil</li>
+            </ol>
+        </nav>
+
+        <div class="row">
+            <!-- Sol Sidebar - Filtreler -->
+            <div class="col-lg-3">
+                <div class="filter-section mb-4">
+                    <h5 class="mb-3">Markalar</h5>
+                    <div class="brand-list">
+                        <a href="#"><span>Audi</span> <span class="badge-count float-end">1,234</span></a>
+                        <a href="#"><span>BMW</span> <span class="badge-count float-end">2,345</span></a>
+                        <a href="#"><span>Mercedes</span> <span class="badge-count float-end">1,876</span></a>
+                        <a href="#"><span>Volkswagen</span> <span class="badge-count float-end">3,456</span></a>
+                        <a href="#"><span>Toyota</span> <span class="badge-count float-end">2,567</span></a>
+                        <a href="#"><span>Honda</span> <span class="badge-count float-end">1,543</span></a>
+                        <a href="#"><span>Ford</span> <span class="badge-count float-end">2,345</span></a>
+                        <a href="#"><span>Renault</span> <span class="badge-count float-end">3,234</span></a>
+                    </div>
+                </div>
+
+                <div class="filter-section mb-4">
+                    <h5 class="mb-3">Fiyat Aralığı</h5>
+                    <div class="mb-3">
+                        <label class="form-label">Minimum</label>
+                        <input type="number" class="form-control" placeholder="0 TL">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Maximum</label>
+                        <input type="number" class="form-control" placeholder="1.000.000 TL">
+                    </div>
+                </div>
+
+                <div class="filter-section mb-4">
+                    <h5 class="mb-3">Model Yılı</h5>
+                    <div class="mb-3">
+                        <label class="form-label">Minimum</label>
+                        <select class="form-select">
+                            <option>2000</option>
+                            <option>2005</option>
+                            <option>2010</option>
+                            <option>2015</option>
+                            <option>2020</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Maximum</label>
+                        <select class="form-select">
+                            <option>2023</option>
+                            <option>2022</option>
+                            <option>2021</option>
+                            <option>2020</option>
+                            <option>2015</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <h5 class="mb-3">Kilometre</h5>
+                    <div class="mb-3">
+                        <label class="form-label">Minimum</label>
+                        <input type="number" class="form-control" placeholder="0 km">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Maximum</label>
+                        <input type="number" class="form-control" placeholder="500.000 km">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ana İçerik -->
+            <div class="col-lg-9">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h4>Otomobil İlanları</h4>
+                    <select class="form-select" style="width: auto;">
+                        <option>En Yeni İlanlar</option>
+                        <option>Fiyat (Düşükten Yükseğe)</option>
+                        <option>Fiyat (Yüksekten Düşüğe)</option>
+                        <option>Kilometre (Az)</option>
+                        <option>Kilometre (Çok)</option>
+                    </select>
+                </div>
+
+                <div class="row g-4">
+                    <!-- İlan Kartları -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="car-card">
+                            <img src="https://via.placeholder.com/300x200" class="car-image w-100" alt="Araba">
+                            <div class="p-3">
+                                <h5 class="mb-2">2020 BMW 3 Serisi</h5>
+                                <p class="text-muted mb-2">50.000 km • Benzin • Otomatik</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="text-primary fw-bold">750.000 TL</span>
+                                    <small class="text-muted">İstanbul</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4">
+                        <div class="car-card">
+                            <img src="https://via.placeholder.com/300x200" class="car-image w-100" alt="Araba">
+                            <div class="p-3">
+                                <h5 class="mb-2">2019 Mercedes C-Serisi</h5>
+                                <p class="text-muted mb-2">75.000 km • Dizel • Otomatik</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="text-primary fw-bold">800.000 TL</span>
+                                    <small class="text-muted">Ankara</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4">
+                        <div class="car-card">
+                            <img src="https://via.placeholder.com/300x200" class="car-image w-100" alt="Araba">
+                            <div class="p-3">
+                                <h5 class="mb-2">2021 Audi A4</h5>
+                                <p class="text-muted mb-2">30.000 km • Benzin • Otomatik</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="text-primary fw-bold">900.000 TL</span>
+                                    <small class="text-muted">İzmir</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Daha fazla ilan kartı... -->
+                </div>
+
+                <!-- Mağaza Vitrin -->
+                <div class="mt-5">
+                    <h4 class="mb-4">Yetkili Bayiler</h4>
+                    <div class="row g-4">
+                        <div class="col-4 col-md-3 col-lg-2">
+                            <img src="https://via.placeholder.com/120x60" class="dealer-logo" alt="Bayi Logo">
+                        </div>
+                        <div class="col-4 col-md-3 col-lg-2">
+                            <img src="https://via.placeholder.com/120x60" class="dealer-logo" alt="Bayi Logo">
+                        </div>
+                        <div class="col-4 col-md-3 col-lg-2">
+                            <img src="https://via.placeholder.com/120x60" class="dealer-logo" alt="Bayi Logo">
+                        </div>
+                        <div class="col-4 col-md-3 col-lg-2">
+                            <img src="https://via.placeholder.com/120x60" class="dealer-logo" alt="Bayi Logo">
+                        </div>
+                        <div class="col-4 col-md-3 col-lg-2">
+                            <img src="https://via.placeholder.com/120x60" class="dealer-logo" alt="Bayi Logo">
+                        </div>
+                        <div class="col-4 col-md-3 col-lg-2">
+                            <img src="https://via.placeholder.com/120x60" class="dealer-logo" alt="Bayi Logo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

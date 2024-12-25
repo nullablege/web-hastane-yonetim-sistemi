@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İkinci El Alışveriş</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ff4e50;
+            --secondary-color: #f8f9fa;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            padding: 0;
+        }
+
+        .navbar-brand img {
+             height: 70px;
+            width: 137px; 
+            margin: 0;
+            padding: 0;
+            top: 0;
+            bottom: 0;
+        }
+
+        .search-container {
+            flex-grow: 1;
+            max-width: 600px;
+        }
+
+        .search-input {
+            border-radius: 4px 0 0 4px;
+            border-left: none;
+        }
+
+        .search-button {
+            border-radius: 0 4px 4px 0;
+            background-color: white;
+            border: 1px solid #ced4da;
+            border-right: none;
+        }
+
+        .location-selector {
+            cursor: pointer;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 6px 12px;
+        }
+
+        .post-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 6px 16px;
+            border-radius: 4px;
+        }
+
+        .category-menu {
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .category-item {
+            padding: 10px 15px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .category-item:hover {
+            background-color: #e9ecef;
+        }
+
+        .category-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+            padding: 20px 0;
+        }
+        .container .product-grid a{
+            text-decoration: none;
+            color: inherit;
+        }
+        .product-card {
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 150px;
+            object-fit: fill;
+        }
+
+        .product-info {
+            padding: 10px;
+        }
+
+        .product-price {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .product-title {
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+
+        .product-location, .product-time {
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+
+        /* Improved Modal Styling */
+        .modal-dialog {
+            max-width: 800px;
+        }
+
+        .modal-content {
+            border-radius: 8px;
+        }
+
+        .modal-header {
+            background-color: var(--primary-color);
+            color: white;
+            border-bottom: none;
+        }
+
+        .modal-title {
+            font-weight: bold;
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .mega-menu-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .mega-menu-column {
+            flex: 1 0 calc(33.333% - 20px);
+            min-width: 200px;
+        }
+
+        .mega-menu-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .mega-menu-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .mega-menu-item {
+            margin-bottom: 8px;
+        }
+
+        .mega-menu-link {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .mega-menu-link:hover {
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            
+            .ncontainer{
+                padding: 0 0.4em 0 0 !important;
+            }
+            .logo{
+                position: relative !important;
+                margin-left: -1em !important;
+                margin-right: -2.5em !important;
+            }
+            .navbar {
+                display: flex;
+                align-items: center;
+                flex-wrap: nowrap; /* Elemanların aynı satırda kalmasını sağlar */
+            }
+
+            .search-container {
+                flex-grow: 1; /* Arama çubuğu kalan alanı kaplar */
+                max-width: 100%; /* Mobil uyum için */
+            }
+
+            .ms-auto {
+                display: flex;
+                align-items: center;
+                flex-shrink: 0; /* Küçük ekranlarda sığmasını zorunlu tutar */
+            }
+
+.navbar .navbar-brand,
+.navbar .search-container,
+.navbar .ms-auto {
+  
+
+            .search-container {
+                max-width: 100% !important;
+            }
+            
+            .category-menu {
+                overflow-x: auto;
+            }
+
+            .mega-menu-column {
+                flex: 1 0 100%;
+            }
+        }}
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+        <div class="container ncontainer">
+            <a class="navbar-brand" href="#">
+                <img src="../img/satiyoruk.png" class="logo" alt="Letgo Logo">
+            </a>
+            
+            <div class="search-container mx-3">
+                <div class="input-group">
+                    <button class="btn search-button" type="button">
+                        <i class="bi bi-search"></i>
+                    </button>
+                    <input type="text" class="form-control search-input aramabar" placeholder="Araba, telefon, bisiklet ve daha fazlası...">
+
+                </div>
+            </div>
+
+            <div class="location-selector d-none d-lg-flex align-items-center">
+                <i class="bi bi-geo-alt me-1"></i>
+                <!-- Lokasyonlar -->
+                <select class="form-select" name="" id="">
+                    <option value="">Gazimağusa</option>
+                    <option value="">İskele</option>
+                    <option value="">Güzelyurt</option>
+                    <option value="">Lefkoşa</option>
+                    <option value="">Girne</option>
+                </select>
+                
+            </div>
+
+            <div class="ms-auto d-flex align-items-center ">
+                <a href="/login.html" class="btn btn-link text-dark text-decoration-none">Giriş</a>
+                <!-- Hoşgeldin Dropdown'u -->
+                <div class="dropdown" style="display: none;">
+                    <button class="btn btn-link text-dark text-decoration-none dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        Hoşgeldin, Kullanıcı
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                        <li><a class="dropdown-item" href="/profile.html">Profilim</a></li>
+                        <li><a class="dropdown-item" href="/my-listings.html">İlanlarım</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#" id="logoutButton">Çıkış Yap</a></li>
+                    </ul>
+                </div>
+                  <!-- Hoşgeldin Dropdown'u -->
+                <button class="post-button ms-2">
+                    <i class="bi bi-camera me-1"></i>
+                    Sat
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="category-menu">
+        <div class="container ncontainer">
+            <div class="d-flex overflow-auto">
+                <div class="category-item" id="allCategoriesToggle">
+                    <img src="https://img.icons8.com/?size=100&id=21969&format=png&color=000000" class="category-icon" alt="">
+                    Tüm Kategoriler
+                </div>
+                <div class="category-item">
+                    <img src="https://img.icons8.com/?size=100&id=Atb5mR0Y5hAu&format=png&color=000000" class="category-icon" alt="">
+                    <span>Vasıta</span>
+                </div>
+                <div class="category-item">
+                    <img src="https://img.icons8.com/?size=100&id=ZwGNoFXGbt9n&format=png&color=000000" class="category-icon" alt="">
+                    <span>Telefon</span>
+                </div>
+                <div class="category-item">
+                    <img src="https://img.icons8.com/?size=100&id=1345&format=png&color=000000" class="category-icon" alt="">
+                    <span>Elektronik</span>
+                </div>
+                <div class="category-item">
+                    <img src="https://img.icons8.com/?size=100&id=19986&format=png&color=000000" class="category-icon" alt="">
+                    <span>Emlak</span>
+                </div>
+                <div class="category-item">
+                    <img src="https://img.icons8.com/?size=100&id=31820&format=png&color=000000" class="category-icon" alt="">
+                    <span>İş İlanları</span>
+                </div>
+                <div class="category-item">
+                    <img src="https://img.icons8.com/?size=100&id=18288&format=png&color=000000" class="category-icon" alt="">
+                    <span>Yedek Parça</span>
+                </div>
+                <div class="category-item">
+                    <img src="https://img.icons8.com/?size=100&id=33934&format=png&color=000000" class="category-icon" alt="">
+                    <span>Diğer</span>
+                </div>
+                <div class="category-item" id="filterButton">
+                    <img src="https://img.icons8.com/?size=100&id=33934&format=png&color=000000" class="category-icon" alt="">
+                    <span>Filtre</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="categoryModal" tabindex="-1" aria-labelledby="categoryModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="categoryModalLabel">Tüm Kategoriler</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mega-menu-content">
+                        <div class="mega-menu-column">
+                            <h3 class="mega-menu-title">Araba</h3>
+                            <ul class="mega-menu-list">
+                                <li class="mega-menu-item"><a href="#" class="mega-menu-link">Fiat</a></li>
+                                <li class="mega-menu-item"><a href="#" class="mega-menu-link">Renault</a></li>
+                                <li class="mega-menu-item"><a href="#" class="mega-menu-link">Volkswagen</a></li>
+                                <li class="mega-menu-item"><a href="#" class="mega-menu-link">Ford</a></li>
+                                <li class="mega-menu-item"><a href="#" class="mega-menu-link">Opel</a></li>
+                                <li class="mega-menu-item"><a href="#" class="mega-menu-link">Peugeot</a></li>
+                            </ul>
+                        </div>
+                        <div class="mega-menu-column">
+                            <h3 class="mega-menu-title">Oto Yedek Parça</h3>
+                            <ul class="mega-menu-list">
+                                <li class="mega-menu-item"><a href="#" class="mega-menu-link">Kaporta & Karoser</a></li>
+                                <li class="mega-menu-item"><a href="#" class="mega-menu-link">Elektrik</a></li>
+                                <li class="mega-menu-item"><a href="#" class="mega-menu-link">Motor & Mekanik</a></li>
+                                <li class="mega-menu-item"><a href="#" class="mega-menu-link">Yürüyen & Direksiyon</a></li>
+                                <li class="mega-menu-item"><a href="#" class="mega-menu-link">Isıtma & Havalandırma & Klima</a></li>
+                            </ul>
+                        </div>
+                        <div class="mega-menu-column">
+                            <h3 class="mega-menu-title">Jant & Lastik</h3>
+                            <ul class="mega-menu-list">
+                                <li class="mega-menu-item"><a href="#" class="mega-menu-link">Jant</a></li>
+                                <li class="mega-menu-item"><a href="#" class="mega-menu-link">Lastik</a></li>
+                                <li class="mega-menu-item"><a href="#" class="mega-menu-link">Jant & Lastik Takımları</a></li>
+                                <li class="mega-menu-item"><a href="#" class="mega-menu-link">Jant Kapakları</a></li>
+                                <li class="mega-menu-item"><a href="#" class="mega-menu-link">Aksesuar & Ekipman</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="filterModalLabel">Filtreleme Seçenekleri</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="filterForm">
+                        <!-- Kategori Seçimi -->
+                        <div class="mb-3">
+                            <label for="categorySelect" class="form-label">Kategori</label>
+                            <select id="categorySelect" class="form-select">
+                                <option selected>Tüm Kategoriler</option>
+                                <option value="1">Araba</option>
+                                <option value="2">Telefon</option>
+                                <option value="3">Elektronik</option>
+                                <option value="4">Ev & Yaşam</option>
+                                <option value="5">Giyim & Aksesuar</option>
+                            </select>
+                        </div>
+    
+                        <!-- Fiyat Aralığı -->
+                        <div class="mb-3">
+                            <label class="form-label">Fiyat Aralığı</label>
+                            <div class="d-flex align-items-center">
+                                <input type="number" class="form-control me-2" id="minPrice" placeholder="Min">
+                                <span>-</span>
+                                <input type="number" class="form-control ms-2" id="maxPrice" placeholder="Max">
+                            </div>
+                        </div>
+    
+                        <!-- Diğer Filtreler -->
+                        <div class="mb-3">
+                            <label class="form-label">Durum</label>
+                            <div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="condition" id="newCondition" value="new" checked>
+                                    <label class="form-check-label" for="newCondition">Yeni</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="condition" id="usedCondition" value="used">
+                                    <label class="form-check-label" for="usedCondition">İkinci El</label>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Uygula ve Temizle Butonları -->
+                        <div class="text-end">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                            <button type="reset" class="btn btn-outline-danger">Temizle</button>
+                            <button type="submit" class="btn btn-danger">Filtrele</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <main class="container">
+        <div class="product-grid">
+            <!-- Product cards will be generated here -->
+
+            <!-- İlan Yapısı -->
+            <a href="">
+                <div class="product-card">
+                    <img src="https://picsum.photos/200/300" class="product-image" alt="PHILIPS Sinek Kaydı ALAN TRAŞ MAKİNESİ">
+                    <div class="product-info">
+                        <div class="product-price">1.999 TL</div>
+                        <div class="product-title">PHILIPS Sinek Kaydı ALAN TRAŞ MAKİNESİ
+                        </div>
+                        <div class="product-location">İSTANBUL / BEYOĞLU
+                        </div>
+                        <div class="product-time">2 GÜN ÖNCE
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+       
+        const filterButton = document.getElementById('filterButton'); // Filtreleme butonunuz
+        const filterModal = new bootstrap.Modal(document.getElementById('filterModal'));
+
+        // Filtreleme butonuna tıklanınca modal'ı göster
+        filterButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            filterModal.show();
+        });
+        // Mega menu toggle
+        const allCategoriesToggle = document.getElementById('allCategoriesToggle');
+        const categoryModal = new bootstrap.Modal(document.getElementById('categoryModal'));
+
+        allCategoriesToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            categoryModal.show();
+        });
+    </script>
+</body>
+</html>

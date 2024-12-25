@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audi İlanları - İlanBurada</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+        }
+        
+        .navbar {
+            box-shadow: 0 2px 4px rgba(0,0,0,.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: #3498db !important;
+        }
+        
+        .btn-post-ad {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+        
+        .filter-section {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,.1);
+        }
+        
+        .listing-table {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,.1);
+        }
+        
+        .listing-table th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .listing-row {
+            transition: background-color 0.3s;
+        }
+        
+        .listing-row:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .car-thumbnail {
+            width: 120px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        
+        .model-badge {
+            background-color: #e9ecef;
+            color: #2c3e50;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        
+        .view-options .btn {
+            padding: 6px 12px;
+            color: #6c757d;
+        }
+        
+        .view-options .btn.active {
+            background-color: #e9ecef;
+            color: #2c3e50;
+        }
+        
+        .premium-badge {
+            background-color: #ffd700;
+            color: #2c3e50;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar (aynı) -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+        <div class="container">
+            <a class="navbar-brand" href="#">İlanBurada</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <form class="d-flex mx-auto">
+                    <input class="form-control me-2" type="search" placeholder="İlan ara..." style="width: 300px;">
+                    <button class="btn btn-post-ad" type="submit">İlan Ver</button>
+                </form>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                            Hoşgeldiniz
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Profil</a></li>
+                            <li><a class="dropdown-item" href="#">İlanlarım</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Çıkış Yap</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#" class="text-decoration-none">Ana Sayfa</a></li>
+                <li class="breadcrumb-item"><a href="#" class="text-decoration-none">Vasıta</a></li>
+                <li class="breadcrumb-item"><a href="#" class="text-decoration-none">Otomobil</a></li>
+                <li class="breadcrumb-item active">Audi</li>
+            </ol>
+        </nav>
+
+        <div class="row">
+            <!-- Sol Sidebar - Filtreler -->
+            <div class="col-lg-3">
+                <div class="filter-section mb-4">
+                    <h5 class="mb-3">Audi Modelleri</h5>
+                    <div class="list-group list-group-flush">
+                        <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            A3
+                            <span class="badge bg-light text-dark">245</span>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            A4
+                            <span class="badge bg-light text-dark">189</span>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            A5
+                            <span class="badge bg-light text-dark">156</span>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            A6
+                            <span class="badge bg-light text-dark">134</span>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            Q5
+                            <span class="badge bg-light text-dark">98</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="filter-section mb-4">
+                    <h5 class="mb-3">Yıl</h5>
+                    <div class="mb-3">
+                        <select class="form-select mb-2">
+                            <option>Min Yıl</option>
+                            <option>2015</option>
+                            <option>2016</option>
+                            <option>2017</option>
+                        </select>
+                        <select class="form-select">
+                            <option>Max Yıl</option>
+                            <option>2023</option>
+                            <option>2022</option>
+                            <option>2021</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="filter-section mb-4">
+                    <h5 class="mb-3">Fiyat Aralığı</h5>
+                    <div class="mb-3">
+                        <input type="number" class="form-control mb-2" placeholder="Min Fiyat">
+                        <input type="number" class="form-control" placeholder="Max Fiyat">
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <h5 class="mb-3">Kilometre</h5>
+                    <div class="mb-3">
+                        <input type="number" class="form-control mb-2" placeholder="Min km">
+                        <input type="number" class="form-control" placeholder="Max km">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ana İçerik -->
+            <div class="col-lg-9">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h4>Audi İlanları (1.234 ilan)</h4>
+                    <div class="view-options">
+                        <div class="btn-group">
+                            <button class="btn btn-light active">
+                                <i class="fas fa-list"></i>
+                            </button>
+                            <button class="btn btn-light">
+                                <i class="fas fa-th-large"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="listing-table table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>İlan</th>
+                                <th>Model</th>
+                                <th>Yıl</th>
+                                <th>KM</th>
+                                <th>Renk</th>
+                                <th>Fiyat</th>
+                                <th>Tarih</th>
+                                <th>İl/İlçe</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="listing-row">
+                                <td>
+                                    <img src="https://via.placeholder.com/120x90" class="car-thumbnail" alt="Audi A4">
+                                </td>
+                                <td>
+                                    <div class="fw-bold">A4 Sedan 40 TDI</div>
+                                    <span class="model-badge">Premium Plus</span>
+                                </td>
+                                <td>2021</td>
+                                <td>46.000</td>
+                                <td>Lacivert</td>
+                                <td class="fw-bold text-primary">2.475.000 TL</td>
+                                <td>18 Kasım 2024</td>
+                                <td>İstanbul<br>Büyükçekmece</td>
+                            </tr>
+                            <tr class="listing-row">
+                                <td>
+                                    <img src="https://via.placeholder.com/120x90" class="car-thumbnail" alt="Audi A3">
+                                </td>
+                                <td>
+                                    <div class="fw-bold">A3 Sedan 35 TFSI</div>
+                                    <span class="premium-badge">Premium</span>
+                                </td>
+                                <td>2020</td>
+                                <td>35.000</td>
+                                <td>Beyaz</td>
+                                <td class="fw-bold text-primary">1.950.000 TL</td>
+                                <td>18 Kasım 2024</td>
+                                <td>Ankara<br>Çankaya</td>
+                            </tr>
+                            <tr class="listing-row">
+                                <td>
+                                    <img src="https://via.placeholder.com/120x90" class="car-thumbnail" alt="Audi A6">
+                                </td>
+                                <td>
+                                    <div class="fw-bold">A6 Sedan 40 TDI</div>
+                                    <span class="model-badge">Sport</span>
+                                </td>
+                                <td>2019</td>
+                                <td>85.000</td>
+                                <td>Siyah</td>
+                                <td class="fw-bold text-primary">2.250.000 TL</td>
+                                <td>17 Kasım 2024</td>
+                                <td>İzmir<br>Karşıyaka</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Sayfalama -->
+                <nav class="mt-4">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">Önceki</a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Sonraki</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2018 MODEL OTOMATİK LAND ROVER RANGE ROVER EVOQUE</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ff4e50;
+            --secondary-color: #f8f9fa;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .navbar {
+            padding: 0;
+        }
+
+        .navbar-brand img {
+            height: 70px;
+            width: 137px; 
+            margin: 0;
+            padding: 0;
+        }
+
+        .search-container {
+            flex-grow: 1;
+            max-width: 600px;
+        }
+
+        .search-button {
+            border-radius: 20px;
+            background-color: white;
+            border: 2px solid #ff4e50;
+            border-right: none;
+        }
+
+        .post-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 6px 16px;
+            border-radius: 22px;
+            transition: all 0.3s;
+            box-shadow: 4px 4px 16px 7px #f8f1f1;
+        }
+
+        .post-button:hover {
+            background-color: white;
+            color: var(--primary-color);
+            border: solid var(--primary-color);
+        }
+
+        .girisbuton {
+            color: var(--primary-color);
+            border: #f3ebeb;
+            border-radius: 22px;
+            padding: 6px 16px;
+            box-shadow: 4px 4px 16px 7px #f8f1f1;
+            background-color: white;
+        }
+
+        .girisbuton:hover {
+           border: var(--primary-color);
+           color: var(--primary-color);
+           text-decoration:underline;
+        }
+
+        .aramabar {
+            border-radius: 20px;
+            border-width: 2px;
+            border-style: solid;
+            border-color: var(--primary-color);
+            padding: 6px 12px;
+            box-shadow: 4px 4px 16px 7px #f8f1f1;
+            border-left: none;
+        }
+
+        .listing-container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-top: 20px;
+            padding: 20px;
+        }
+
+        .gallery-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .image-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            border: none;
+            border-radius: 50%;
+            padding: 10px;
+            opacity: 0.7;
+        }
+
+        .image-nav:hover {
+            opacity: 1;
+        }
+
+        .image-nav-left {
+            left: 10px;
+        }
+
+        .image-nav-right {
+            right: 10px;
+        }
+
+        .thumbnail-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            overflow-x: auto;
+            padding: 10px 0;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .thumbnail:hover, .thumbnail.active {
+            opacity: 1;
+            border: 2px solid var(--primary-color);
+        }
+
+        .price-tag {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .specs-table {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .specs-table td {
+            padding: 8px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .specs-table td:first-child {
+            font-weight: bold;
+            width: 200px;
+        }
+
+        .contact-card {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .action-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 16px;
+            border-radius: 4px;
+            border: 1px solid #dee2e6;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .action-button:hover {
+            background: #f8f9fa;
+        }
+
+        .contact-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .contact-button:hover {
+            background-color: #e6464a;
+        }
+
+        .show-phone-button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .show-phone-button:hover {
+            background-color: #218838;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-brand img {
+                height: 50px;
+                width: auto;
+            }
+            .search-container {
+                max-width: 100%;
+                min-width: 20%;
+                display: block !important;
+            }
+            .aramabar {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="../img/satiyoruk.png" alt="Satiyoruk Logo">
+            </a>
+            
+            <div class="search-container d-none d-md-block mx-3">
+                <div class="input-group">
+                    <button class="btn search-button" type="button">
+                        <i class="bi bi-search"></i>
+                    </button>
+                    <input type="text" class="form-control aramabar" placeholder="Araba, telefon, bisiklet ve daha fazlası...">
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center">
+                <a href="/login.html" class="btn girisbuton me-2">Giriş Yap</a>
+                <button class="post-button" type="button"><i class="bi bi-camera me-2"></i>İlan Ver</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="listing-container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="gallery-container">
+                        <img src="../img/satiyoruk.png" alt="Range Rover Evoque" class="main-image" id="mainImage">
+                        <button class="image-nav image-nav-left" onclick="changeImage(-1)">
+                            <i class="bi bi-chevron-left"></i>
+                        </button>
+                        <button class="image-nav image-nav-right" onclick="changeImage(1)">
+                            <i class="bi bi-chevron-right"></i>
+                        </button>
+                        <div class="thumbnail-container">
+                            <img src="../img/satiyoruk.png" alt="Thumbnail 1" class="thumbnail active" onclick="setMainImage(0)">
+                            <img src="../img/satiyoruk.png" alt="Thumbnail 2" class="thumbnail" onclick="setMainImage(1)">
+                            <img src="../img/satiyoruk.png" alt="Thumbnail 3" class="thumbnail" onclick="setMainImage(2)">
+                            <img src="../img/satiyoruk.png" alt="Thumbnail 4" class="thumbnail" onclick="setMainImage(3)">
+                            <img src="../img/satiyoruk.png" alt="Thumbnail 5" class="thumbnail" onclick="setMainImage(4)">
+                        </div>
+                    </div>
+                    
+                    <div class="price-tag">
+                        <span id="priceValue">22.000</span>
+                        <select class="form-select ms-2" style="width: auto;" id="currencySelect">
+                            <option value="GBP">GBP</option>
+                            <option value="USD">USD</option>
+                            <option value="TL">TL</option>
+                        </select>
+                    </div>
+                    
+                    <h4>Açıklama</h4>
+                    <p>Araç 2023 yılında plakalandırılmıştır eksisiz yeni servisi bakımları yapılmıştır4 lastiği de yeni değişmiştir cam tavan ve özel renk</p>
+
+                    <div class="action-buttons">
+                        <button class="action-button">
+                            <i class="bi bi-arrow-repeat me-2"></i>
+                            Karşılaştır
+                        </button>
+                        <button class="action-button">
+                            <i class="bi bi-heart me-2"></i>
+                            Favori ekle
+                        </button>
+                        <button class="action-button">
+                            <i class="bi bi-share me-2"></i>
+                            Paylaş
+                        </button>
+                        <button class="action-button">
+                            <i class="bi bi-flag me-2"></i>
+                            Sorun Bildir
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="contact-card">
+                        <h5>Veysel bayar</h5>
+                        <p class="text-muted mb-2">Lefkoşa / Yenikent</p>
+                        <p class="mb-3">
+                            <span id="phoneNumber" style="display: none;">+905338440354</span>
+                            <button id="showPhoneButton" class="show-phone-button">Telefon Numarasını Göster</button>
+                        </p>
+                        <button class="contact-button">
+                            <i class="bi bi-chat-dots me-2"></i>
+                            Mesaj Gönder
+                        </button>
+                    </div>
+
+                    <div class="mt-3">
+                        <div class="d-flex justify-content-between text-muted small mb-2">
+                            <span>
+                                <i class="bi bi-geo-alt me-1"></i>
+                                Konum
+                            </span>
+                            <span>Lefkoşa/yenikent</span>
+                        </div>
+                        <div class="d-flex justify-content-between text-muted small">
+                            <span>
+                                <i class="bi bi-clock me-1"></i>
+                                İlan Tarihi
+                            </span>
+                            <span>19 Kasım 2024</span>
+                        </div>
+                    </div>
+
+                    <h4 class="mt-4">Araç Özellikleri</h4>
+                    <table class="specs-table">
+                        <tr>
+                            <td>İlan No:</td>
+                            <td>151818</td>
+                        </tr>
+                        <tr>
+                            <td>İlan Tarihi:</td>
+                            <td>19 Kasım 2024</td>
+                        </tr>
+                        <tr>
+                            <td>Araç Durumu:</td>
+                            <td>2.El</td>
+                        </tr>
+                        <tr>
+                            <td>Kasa Tipi:</td>
+                            <td>Suv</td>
+                        </tr>
+                        <tr>
+                            <td>Yıl:</td>
+                            <td>2018</td>
+                        </tr>
+                        <tr>
+                            <td>Mil:</td>
+                            <td>69000</td>
+                        </tr>
+                        <tr>
+                            <td>Yakıt Türü:</td>
+                            <td>Dizel</td>
+                        </tr>
+                        <tr>
+                            <td>Vites Tipi:</td>
+                            <td>Otomatik</td>
+                        </tr>
+                        <tr>
+                            <td>Renk:</td>
+                            <td>Mavi-Okyanus</td>
+                        </tr>
+                        <tr>
+                            <td>Direksiyon Tipi:</td>
+                            <td>Sağ Direksiyon</td>
+                        </tr>
+                        <tr>
+                            <td>Motor Hacmi (cc):</td>
+                            <td>2000</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const images = [
+            '/placeholder.svg',
+            '/placeholder.svg',
+            '/placeholder.svg',
+            '/placeholder.svg',
+            '/placeholder.svg'
+        ];
+        let currentImageIndex = 0;
+
+        function changeImage(direction) {
+            currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
+            updateMainImage();
+        }
+
+        function setMainImage(index) {
+            currentImageIndex = index;
+            updateMainImage();
+        }
+
+        function updateMainImage() {
+            const mainImage = document.getElementById('mainImage');
+            mainImage.src = images[currentImageIndex];
+            
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            thumbnails.forEach((thumb, index) => thumb.classList.toggle('active', index === currentImageIndex)
+            );
+        }
+
+        document.getElementById('showPhoneButton').addEventListener('click', function() {
+            document.getElementById('phoneNumber').style.display = 'inline';
+            this.style.display = 'none';
+        });
+
+        document.getElementById('currencySelect').addEventListener('change', function() {
+            const price = 22000;
+            const currency = this.value;
+            let convertedPrice;
+
+            switch(currency) {
+                case 'USD':
+                    convertedPrice = (price * 1.25).toFixed(2); // Örnek dönüşüm oranı
+                    break;
+                case 'TL':
+                    convertedPrice = (price * 35.5).toFixed(2); // Örnek dönüşüm oranı
+                    break;
+                default:
+                    convertedPrice = price.toFixed(2);
+            }
+
+            document.getElementById('priceValue').textContent = convertedPrice;
+        });
+    </script>
+</body>
+</html>

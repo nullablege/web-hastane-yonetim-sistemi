@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern İkinci El İlan Sitesi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+        }
+        
+        .navbar {
+            box-shadow: 0 2px 4px rgba(0,0,0,.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: #3498db !important;
+        }
+        
+        .nav-link {
+            color: #34495e !important;
+        }
+        
+        .btn-post-ad {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+        
+        .btn-post-ad:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .category-card {
+            transition: all 0.3s;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,.1);
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,.15);
+        }
+        
+        .category-icon {
+            font-size: 2rem;
+            color: #3498db;
+        }
+        
+        .product-card {
+            border: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,.1);
+            transition: all 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,.15);
+        }
+        
+        .product-card img {
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .footer {
+            background-color: #34495e;
+            color: #ecf0f1;
+        }
+        
+        .footer a {
+            color: #bdc3c7;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            color: #ecf0f1;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+        <div class="container">
+            <a class="navbar-brand" href="#">İlanBurada</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <form class="d-flex mx-auto">
+                    <input class="form-control me-2" type="search" placeholder="İlan ara..." style="width: 300px;">
+                    <button class="btn btn-post-ad" type="submit">İlan Ver</button>
+                </form>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                            Hoşgeldiniz
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Profil</a></li>
+                            <li><a class="dropdown-item" href="#">İlanlarım</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Çıkış Yap</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-3">
+                <h4 class="mb-4">Kategoriler</h4>
+                <div class="accordion" id="categoryAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseVehicles">
+                                Vasıta
+                            </button>
+                        </h2>
+                        <div id="collapseVehicles" class="accordion-collapse collapse show" data-bs-parent="#categoryAccordion">
+                            <div class="accordion-body">
+                                <ul class="list-unstyled">
+                                    <li><a href="#" class="text-decoration-none text-muted">Otomobil</a></li>
+                                    <li><a href="#" class="text-decoration-none text-muted">Motosiklet</a></li>
+                                    <li><a href="#" class="text-decoration-none text-muted">Ticari Araçlar</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRealEstate">
+                                Emlak
+                            </button>
+                        </h2>
+                        <div id="collapseRealEstate" class="accordion-collapse collapse" data-bs-parent="#categoryAccordion">
+                            <div class="accordion-body">
+                                <ul class="list-unstyled">
+                                    <li><a href="#" class="text-decoration-none text-muted">Konut</a></li>
+                                    <li><a href="#" class="text-decoration-none text-muted">İş Yeri</a></li>
+                                    <li><a href="#" class="text-decoration-none text-muted">Arsa</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseElectronics">
+                                Elektronik
+                            </button>
+                        </h2>
+                        <div id="collapseElectronics" class="accordion-collapse collapse" data-bs-parent="#categoryAccordion">
+                            <div class="accordion-body">
+                                <ul class="list-unstyled">
+                                    <li><a href="#" class="text-decoration-none text-muted">Cep Telefonu</a></li>
+                                    <li><a href="#" class="text-decoration-none text-muted">Bilgisayar</a></li>
+                                    <li><a href="#" class="text-decoration-none text-muted">Televizyon</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- İlanlar -->
+            <div class="col-md-9">
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="col">
+                        <div class="card h-100 product-card">
+                            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Ürün Resmi">
+                            <div class="card-body">
+                                <h5 class="card-title">2018 Model Otomobil</h5>
+                                <p class="card-text text-muted">İstanbul, Kadıköy</p>
+                                <p class="card-text fw-bold text-primary">150.000 TL</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 product-card">
+                            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Ürün Resmi">
+                            <div class="card-body">
+                                <h5 class="card-title">iPhone 12 Pro</h5>
+                                <p class="card-text text-muted">Ankara, Çankaya</p>
+                                <p class="card-text fw-bold text-primary">8.000 TL</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 product-card">
+                            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Ürün Resmi">
+                            <div class="card-body">
+                                <h5 class="card-title">Modern Koltuk Takımı</h5>
+                                <p class="card-text text-muted">İzmir, Bornova</p>
+                                <p class="card-text fw-bold text-primary">5.500 TL</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 product-card">
+                            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Ürün Resmi">
+                            <div class="card-body">
+                                <h5 class="card-title">Bisiklet</h5>
+                                <p class="card-text text-muted">Antalya, Muratpaşa</p>
+                                <p class="card-text fw-bold text-primary">2.000 TL</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 product-card">
+                            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Ürün Resmi">
+                            <div class="card-body">
+                                <h5 class="card-title">Laptop</h5>
+                                <p class="card-text text-muted">Bursa, Nilüfer</p>
+                                <p class="card-text fw-bold text-primary">6.500 TL</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 product-card">
+                            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Ürün Resmi">
+                            <div class="card-body">
+                                <h5 class="card-title">Antika Saat</h5>
+                                <p class="card-text text-muted">Eskişehir, Tepebaşı</p>
+                                <p class="card-text fw-bold text-primary">3.200 TL</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer py-5 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5>Hakkımızda</h5>
+                    <p>İlanBurada, güvenilir ve hızlı ikinci el alışverişin adresi. 2010'dan beri hizmetinizdeyiz.</p>
+                </div>
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5>Hızlı Bağlantılar</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Ana Sayfa</a></li>
+                        <li><a href="#">İlan Ver</a></li>
+                        <li><a href="#">Kategoriler</a></li>
+                        <li><a href="#">İletişim</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Bizi Takip Edin</h5>
+                    <div class="d-flex">
+                        <a href="#" class="me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="me-3"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>&copy; 2023 İlanBurada. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

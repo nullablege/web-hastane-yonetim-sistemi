@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kurum İçi E-Posta</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            padding: 20px 0;
+        }
+        .header img {
+            width: 40%; /* Logo boyutu */
+            padding: 0;
+        }
+        .content {
+            text-align: left;
+            margin-top: 20px;
+        }
+        .content h1 {
+            color: #333333;
+        }
+        .content p {
+            font-size: 16px;
+            color: #666666;
+        }
+        .info {
+            margin-top: 20px;
+            padding: 0 20px;
+        }
+        .info p {
+            margin: 5px 0;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #00bfa5;
+            color: #ffffff;
+            font-size: 14px;
+            border-radius: 5px;
+        }
+        .footer a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+        .rights {
+            font-size: 12px;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <img src="https://i.ibb.co/xGzDqM9/logo.png" alt="Kurum Logo">
+    </div>
+    <div class="content">
+        <center><h1>$Subject</h1></center>
+        <div class="info">
+            <center><p><strong>Gönderici:</strong> $sender</p></center>
+            <center><p><strong>Alıcı:</strong> $recipient</p></center>
+        </div>
+        
+        <center><h2>Mesaj İçeriği:</h2></center>
+        <center><p>$message_content</p></center>
+        
+        <p>İyi çalışmalar dileriz!</p>
+    </div>
+
+    <div class="footer">
+        <p>Kurum içi iletişiminiz için teşekkür ederiz. <span>&#128525;</span></p>
+        <p>Herhangi bir sorunuz varsa, lütfen iletişime geçin.</p>
+
+        <div class="rights">
+            <p>&copy; $date | Kurum Adı, Tüm hakları saklıdır.</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

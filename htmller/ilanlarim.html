@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İlanlarım</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .listings-container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-top: 40px;
+        }
+        .listing-card {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .listing-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .btn-primary {
+            background-color: #ff4e50;
+            border-color: #ff4e50;
+        }
+        .btn-primary:hover {
+            background-color: #e6464a;
+            border-color: #e6464a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="listings-container">
+            <h2 class="mb-4">İlanlarım</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="listing-card">
+                        <img src="/placeholder.svg" alt="İlan Resmi" class="listing-image">
+                        <div class="card-body">
+                            <h5 class="card-title">PHILIPS Sinek Kaydı ALAN TRAŞ MAKİNESİ</h5>
+                            <p class="card-text">1.999 TL</p>
+                            <p class="card-text"><small class="text-muted">İSTANBUL / BEYOĞLU • 2 GÜN ÖNCE</small></p>
+                            <div class="d-flex justify-content-between">
+                                <a href="#" class="btn btn-primary">Düzenle</a>
+                                <a href="#" class="btn btn-outline-danger">Kaldır</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="listing-card">
+                        <img src="/placeholder.svg" alt="İlan Resmi" class="listing-image">
+                        <div class="card-body">
+                            <h5 class="card-title">Toptan 20.000 mAh Powerbank Tam Kapasite</h5>
+                            <p class="card-text">285 TL</p>
+                            <p class="card-text"><small class="text-muted">İSTANBUL / BEYOĞLU • 2 GÜN ÖNCE</small></p>
+                            <div class="d-flex justify-content-between">
+                                <a href="#" class="btn btn-primary">Düzenle</a>
+                                <a href="#" class="btn btn-outline-danger">Kaldır</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="listing-card">
+                        <img src="/placeholder.svg" alt="İlan Resmi" class="listing-image">
+                        <div class="card-body">
+                            <h5 class="card-title">skip hop yürüteç</h5>
+                            <p class="card-text">1.300 TL</p>
+                            <p class="card-text"><small class="text-muted">İSTANBUL / BEYOĞLU • DÜN</small></p>
+                            <div class="d-flex justify-content-between">
+                                <a href="#" class="btn btn-primary">Düzenle</a>
+                                <a href="#" class="btn btn-outline-danger">Kaldır</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

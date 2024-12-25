@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İlan Düzenle</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .edit-listing-container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-top: 40px;
+        }
+        .listing-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .btn-primary {
+            background-color: #ff4e50;
+            border-color: #ff4e50;
+        }
+        .btn-primary:hover {
+            background-color: #e6464a;
+            border-color: #e6464a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="edit-listing-container">
+            <h2 class="mb-4">İlan Düzenle</h2>
+            <form>
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="/placeholder.svg" alt="İlan Resmi" class="listing-image mb-3">
+                        <div class="mb-3">
+                            <label for="listingImage" class="form-label">Yeni Resim Yükle</label>
+                            <input type="file" class="form-control" id="listingImage">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="listingTitle" class="form-label">Başlık</label>
+                            <input type="text" class="form-control" id="listingTitle" value="PHILIPS Sinek Kaydı ALAN TRAŞ MAKİNESİ">
+                        </div>
+                        <div class="mb-3">
+                            <label for="listingPrice" class="form-label">Fiyat</label>
+                            <input type="text" class="form-control" id="listingPrice" value="1.999 TL">
+                        </div>
+                        <div class="mb-3">
+                            <label for="listingLocation" class="form-label">Konum</label>
+                            <input type="text" class="form-control" id="listingLocation" value="İSTANBUL / BEYOĞLU">
+                        </div>
+                        <div class="mb-3">
+                            <label for="listingDescription" class="form-label">Açıklama</label>
+                            <textarea class="form-control" id="listingDescription" rows="4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nunc id aliquam tincidunt, nisl nunc tincidunt nunc, vitae aliquam nunc nunc vitae nunc.</textarea>
+                        </div>
+                    </div>
+                </div>
+                <h4 class="mt-4 mb-3">Özellikler</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="listingBrand" class="form-label">Marka</label>
+                            <input type="text" class="form-control" id="listingBrand" value="Philips">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="listingModel" class="form-label">Model</label>
+                            <input type="text" class="form-control" id="listingModel" value="XYZ123">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="listingCondition" class="form-label">Durum</label>
+                            <select class="form-select" id="listingCondition">
+                                <option>Yeni</option>
+                                <option selected>İkinci El</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="listingWarranty" class="form-label">Garanti</label>
+                            <input type="text" class="form-control" id="listingWarranty" value="6 Ay">
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between mt-4">
+                    <button type="submit" class="btn btn-primary">Değişiklikleri Kaydet</button>
+                    <a href="#" class="btn btn-outline-danger">İlanı Kaldır</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

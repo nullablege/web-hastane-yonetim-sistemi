@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İkinci El Alışveriş</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+
+        :root {
+            --primary-color: #ff4e50;
+            --secondary-color: #f8f9fa;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            padding: 0;
+        }
+
+        .navbar-brand img {
+            height: 70px;
+            width: 137px; 
+            margin: 0;
+            padding: 0;
+            top: 0;
+            bottom: 0;
+        }
+
+        .search-container {
+            flex-grow: 1;
+            max-width: 600px;
+        }
+
+        .search-button {
+            border-radius: 20px;
+            background-color: white;
+            border: 2px solid #ff4e50;
+            border-right: none;
+        }
+
+        .post-button {
+            font-family: "Sour Gummy", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 402;
+            font-style: normal;
+            font-variation-settings: "wdth" 100;
+            background-color: var(--primary-color);
+            color: white;
+            border: solid;
+            padding: 6px 16px;
+            border-radius: 22px;
+            transition: all 0.3s;
+            box-shadow: 4px 4px 16px 7px #f8f1f1;
+        }
+
+        .post-button:hover {
+            background-color: white;
+            color: var(--primary-color);
+            border: solid var(--primary-color);
+        }
+
+        .girisbuton {
+            font-family: "Sour Gummy", sans-serif;
+            font-size: 15px;
+            font-optical-sizing: auto;
+            font-weight: 402;
+            font-style: normal;
+            font-variation-settings: "wdth" 100;
+            color: var(--primary-color);
+            border: #f3ebeb;
+            border-radius: 22px;
+            padding: 6px 16px;
+            box-shadow: 4px 4px 16px 7px #f8f1f1;
+            background-color: white;
+        }
+
+        .girisbuton:hover {
+            border: var(--primary-color);
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        .category-item {
+            cursor: pointer;
+            padding: 10px 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .category-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .subcategory {
+            padding-left: 20px;
+        }
+
+        .collapse {
+            display: none;
+        }
+
+        .collapse.show {
+            display: block;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+            padding: 20px 0;
+        }
+
+        .product-grid a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .product-card {
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 150px;
+            object-fit: fill;
+        }
+
+        .product-info {
+            padding: 10px;
+        }
+
+        .product-price {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .product-title {
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+
+        .product-location, .product-time {
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+        :root {
+            --primary-color: #ff4e50;
+            --secondary-color: #f8f9fa;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            padding: 0;
+        }
+
+        .navbar-brand img {
+             height: 70px;
+            width: 137px; 
+            margin: 0;
+            padding: 0;
+            top: 0;
+            bottom: 0;
+        }
+
+        .search-container {
+            flex-grow: 1;
+            max-width: 600px;
+        }
+
+        .search-input {
+            border-radius: 4px 0 0 4px;
+            border-left: none;
+        }
+
+        .search-button {
+            border-radius: 0 4px 4px 0;
+            background-color: white;
+            border: 1px solid #ced4da;
+            border-right: none;
+        }
+
+        .location-selector {
+            cursor: pointer;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 6px 12px;
+        }
+
+        .post-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 6px 16px;
+            border-radius: 4px;
+        }
+
+        .category-menu {
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .category-item {
+            padding: 10px 15px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .category-item:hover {
+            background-color: #e9ecef;
+        }
+
+        .category-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+            padding: 20px 0;
+        }
+        .container .product-grid a{
+            text-decoration: none;
+            color: inherit;
+        }
+        .product-card {
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 150px;
+            object-fit: fill;
+        }
+
+        .product-info {
+            padding: 10px;
+        }
+
+        .product-price {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .product-title {
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+
+        .product-location, .product-time {
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+
+        /* Improved Modal Styling */
+        .modal-dialog {
+            max-width: 800px;
+        }
+
+        .modal-content {
+            border-radius: 8px;
+        }
+
+        .modal-header {
+            background-color: var(--primary-color);
+            color: white;
+            border-bottom: none;
+        }
+
+        .modal-title {
+            font-weight: bold;
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .mega-menu-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .mega-menu-column {
+            flex: 1 0 calc(33.333% - 20px);
+            min-width: 200px;
+        }
+
+        .mega-menu-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .mega-menu-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .mega-menu-item {
+            margin-bottom: 8px;
+        }
+
+        .mega-menu-link {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .mega-menu-link:hover {
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            
+            .ncontainer{
+                padding: 0 0.4em 0 0 !important;
+            }
+            .logo{
+                position: relative !important;
+                margin-left: -1em !important;
+                margin-right: -2.5em !important;
+            }
+            .navbar {
+                display: flex;
+                align-items: center;
+                flex-wrap: nowrap; /* Elemanların aynı satırda kalmasını sağlar */
+            }
+
+            .search-container {
+                flex-grow: 1; /* Arama çubuğu kalan alanı kaplar */
+                max-width: 100%; /* Mobil uyum için */
+            }
+
+            .ms-auto {
+                display: flex;
+                align-items: center;
+                flex-shrink: 0; /* Küçük ekranlarda sığmasını zorunlu tutar */
+            }
+
+.navbar .navbar-brand,
+.navbar .search-container,
+.navbar .ms-auto {
+  
+
+            .search-container {
+                max-width: 100% !important;
+            }
+            
+            .category-menu {
+                overflow-x: auto;
+            }
+
+            .mega-menu-column {
+                flex: 1 0 100%;
+            }
+        }}
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+        <div class="container ncontainer">
+            <a class="navbar-brand" href="#">
+                <img src="img/satiyoruk.png" class="logo" alt="Letgo Logo">
+            </a>
+            
+            <div class="search-container mx-3">
+                <div class="input-group">
+                    <button class="btn search-button" type="button">
+                        <i class="bi bi-search"></i>
+                    </button>
+                    <input type="text" class="form-control search-input aramabar" placeholder="Araba, telefon, bisiklet ve daha fazlası...">
+                </div>
+            </div>
+
+            <div onclick="openselect()" class="location-selector d-none d-lg-flex align-items-center">
+                <i class="bi bi-geo-alt me-1"></i>
+                <!-- Lokasyonlar -->
+                <select class="form-select lokasyoncss" id="citySelect" onchange="removePlaceholder(this)">
+                    <option value="" id="defaultOption" selected>İl Seçiniz</option>
+                    <option value="gazimagusa">Gazimağusa</option>
+                    <option value="iskele">İskele</option>
+                    <option value="guzelyurt">Güzelyurt</option>
+                    <option value="lefkosa">Lefkoşa</option>
+                    <option value="girne">Girne</option>
+                </select>
+            </div>
+
+            <div class="ms-auto d-flex align-items-center">
+                <a href="/login.html" class="btn girisbuton">Giriş Yap</a>
+                <button class="post-button ms-2" type="submit"><i class="bi bi-camera me-2"></i>İlan Ver</button>
+            </div>
+        </div>
+    </nav>
+    <div class="category-menu">
+        <div class="container ncontainer">
+            <div class="d-flex overflow-auto">
+                <div class="category-item" id="allCategoriesToggle">
+                    <img src="https://img.icons8.com/?size=100&id=21969&format=png&color=000000" class="category-icon" alt="">
+                    Tüm Kategoriler
+                </div>
+                <div class="category-item">
+                    <img src="https://img.icons8.com/?size=100&id=Atb5mR0Y5hAu&format=png&color=000000" class="category-icon" alt="">
+                    <span>Vasıta</span>
+                </div>
+                <div class="category-item">
+                    <img src="https://img.icons8.com/?size=100&id=ZwGNoFXGbt9n&format=png&color=000000" class="category-icon" alt="">
+                    <span>Telefon</span>
+                </div>
+                <div class="category-item">
+                    <img src="https://img.icons8.com/?size=100&id=1345&format=png&color=000000" class="category-icon" alt="">
+                    <span>Elektronik</span>
+                </div>
+                <div class="category-item">
+                    <img src="https://img.icons8.com/?size=100&id=19986&format=png&color=000000" class="category-icon" alt="">
+                    <span>Emlak</span>
+                </div>
+                <div class="category-item">
+                    <img src="https://img.icons8.com/?size=100&id=31820&format=png&color=000000" class="category-icon" alt="">
+                    <span>İş İlanları</span>
+                </div>
+                <div class="category-item">
+                    <img src="https://img.icons8.com/?size=100&id=18288&format=png&color=000000" class="category-icon" alt="">
+                    <span>Yedek Parça</span>
+                </div>
+                <div class="category-item">
+                    <img src="https://img.icons8.com/?size=100&id=33934&format=png&color=000000" class="category-icon" alt="">
+                    <span>Diğer</span>
+                </div>
+                <div class="category-item" id="filterButton">
+                    <img src="https://img.icons8.com/?size=100&id=33934&format=png&color=000000" class="category-icon" alt="">
+                    <span>Filtre</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Kategori ve İçerik -->
+    <div class="container">
+        <div class="row mt-3">
+            <!-- Kategori Bölümü -->
+            <div class="col-md-3">
+                <h5>Kategoriler</h5>
+                <div class="category-item" data-bs-toggle="collapse" data-bs-target="#phoneCategory">
+                    Telefon <i class="float-end bi bi-chevron-down"></i>
+                </div>
+                <div id="phoneCategory" class="collapse show">
+                    <div class="subcategory">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="iphone">
+                            <label class="form-check-label" for="iphone">iPhone (101.676)</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="android">
+                            <label class="form-check-label" for="android">Android (91.697)</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="accessories">
+                            <label class="form-check-label" for="accessories">Aksesuarlar (42.907)</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="category-item" data-bs-toggle="collapse" data-bs-target="#electronicsCategory">
+                    Elektronik <i class="float-end bi bi-chevron-down"></i>
+                </div>
+                <div id="electronicsCategory" class="collapse">
+                    <div class="subcategory">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="computers">
+                            <label class="form-check-label" for="computers">Bilgisayarlar</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="tablets">
+                            <label class="form-check-label" for="tablets">Tabletler</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ürün Listesi -->
+            <div class="col-md-9">
+                <div class="product-grid">
+                    <!-- Ürün Kartı -->
+                    <div class="product-card">
+                        <img src="https://picsum.photos/200/300" class="product-image" alt="Ürün">
+                        <div class="product-info">
+                            <div class="product-price">1.999 TL</div>
+                            <div class="product-title">PHILIPS Sinek Kaydı Traş Makinesi</div>
+                            <div class="product-location">İstanbul, Beyoğlu</div>
+                            <div class="product-time">2 Gün Önce</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
