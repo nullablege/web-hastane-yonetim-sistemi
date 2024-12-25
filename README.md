@@ -43,6 +43,7 @@ Bu proje, hastane yönetim süreçlerini kolaylaştırmak ve dijitalleştirmek a
   - **Veritabanı Adı:** `327Hastanesi`
 
 ## 📦 Kurulum
+NOT : Bilmediğim bir sebepten dolayı dosyaları indirirken virüs algılıyor. ( Mail yolladığım dosyalar için ) Bunun sebebini bilmiyorum.
 
 1. Proje dosyalarını indirin veya klonlayın:
    ```bash
