@@ -2,7 +2,7 @@
 
 ![Özel 327 Hastanesi Logo](https://i.ibb.co/xGzDqM9/logo.png)
 
-**Özel 327 Hastanesi Yönetim Paneli**, BTBS 327 Dersinin bitirme projesi olan modern sağlık kurumlarının karmaşık operasyonel ihtiyaçlarını karşılamak üzere tasarlanmış, **güçlü ve kullanıcı dostu bir PHP tabanlı web uygulamasıdır.** Bu platform, hastane yönetimi süreçlerini dijitalleştirerek; admin, doktor ve sekreter rolleri için özel arayüzler ve işlevler sunar. Randevu yönetiminden personel bilgilerine, hasta kayıtlarından kurum içi iletişime kadar geniş bir yelpazede çözümler sunarak verimliliği ve hasta memnuniyetini artırmayı hedefler.
+**Özel 327 Hastanesi Yönetim Paneli**, Server-side Programming Dersinin bitirme projesi olan modern sağlık kurumlarının karmaşık operasyonel ihtiyaçlarını karşılamak üzere tasarlanmış, **güçlü ve kullanıcı dostu bir PHP tabanlı web uygulamasıdır.** Bu platform, hastane yönetimi süreçlerini dijitalleştirerek; admin, doktor ve sekreter rolleri için özel arayüzler ve işlevler sunar. Randevu yönetiminden personel bilgilerine, hasta kayıtlarından kurum içi iletişime kadar geniş bir yelpazede çözümler sunarak verimliliği ve hasta memnuniyetini artırmayı hedefler.
 
 Bu proje, **güvenlik, ölçeklenebilirlik ve kullanım kolaylığı** ilkeleri temel alınarak, titiz bir mühendislik çalışmasıyla geliştirilmiştir. Endüstri standardı **PHPMailer** kütüphanesi ile entegre edilmiş profesyonel e-posta bildirim sistemi, anlık ve güvenilir iletişim sağlar. Veritabanı etkileşimlerinde **güvenlik en ön planda tutularak** `htmlspecialchars`, `stripslashes` ve `trim` gibi fonksiyonlarla kullanıcı girdileri arındırılmış, şifreler ise `password_hash` ve `password_verify` ile **BCRYPT** algoritması kullanılarak güçlü bir şekilde korunmuştur.
 
